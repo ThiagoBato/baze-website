@@ -1,3 +1,6 @@
+import { createGlobalStyle } from 'styled-components';
+
+export const GlobalStyle = createGlobalStyle`
 * {
   box-sizing: border-box;
   font-family: 'Lato', sans-serif;
@@ -14,3 +17,5 @@ h2 {
     font-size: 1rem;
   }
 }
+
+`;
