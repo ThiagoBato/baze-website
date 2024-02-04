@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Outlet, NavLink } from 'react-router-dom';
+import { Outlet, NavLink, Link } from 'react-router-dom';
+import { animateScroll } from 'react-scroll';
 import style from 'styled-components';
 import HeaderLogoImg from '../../assets/img/logo-topo.svg';
 
@@ -86,8 +87,14 @@ export const Header = () => {
   const handleToggleClick = () => {
     setMenuMobile(!menuMobile);
   };
+
   const handleClickLink = () => {
     setMenuMobile(false);
+  };
+
+  const handleContactClick = () => {
+    handleClickLink();
+    animateScroll.scrollToBottom({ smooth: true, duration: 500, delay: 0 });
   };
 
   return (
@@ -111,17 +118,17 @@ export const Header = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/residencials" onClick={handleClickLink}>
+              <NavLink to="/residenciais" onClick={handleClickLink}>
                 Residenciais
               </NavLink>
             </li>
             <li>
-              <NavLink to="/buildings" onClick={handleClickLink}>
+              <NavLink to="/edificios" onClick={handleClickLink}>
                 Edifícios
               </NavLink>
             </li>
             <li>
-              <NavLink to="/comercials" onClick={handleClickLink}>
+              <NavLink to="/comerciais" onClick={handleClickLink}>
                 Comerciais
               </NavLink>
             </li>
@@ -131,14 +138,12 @@ export const Header = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/team" onClick={handleClickLink}>
+              <NavLink to="/time" onClick={handleClickLink}>
                 Time
               </NavLink>
             </li>
             <li>
-              <NavLink to="/contact" onClick={handleClickLink}>
-                Contato
-              </NavLink>
+              <Link onClick={handleContactClick}>Contato</Link>
             </li>
           </HeaderList>
         </nav>

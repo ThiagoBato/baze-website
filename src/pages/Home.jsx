@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import HomeLogoImg from '../assets/img/pic07.jpg';
 import HomeLogoIcon from '../assets/img/home-icone.svg';
 import HomeLatestProjectsImg from '../assets/img/img02.jpg';
+import { CardProjectsItem } from '../components/CardProjectsItem';
 
 const HomeContainer = styled.main`
   padding: 0;
@@ -110,45 +111,6 @@ const HomeLatestProjectsList = styled.ul`
     flex-direction: column;
   }
 `;
-const HomeLatestProjectsItem = styled.li`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 33%;
-  max-width: 350px;
-  padding: 20px;
-
-  @media (max-width: 840px) {
-    max-width: 100%;
-    padding: 0;
-    width: 100%;
-  }
-
-  & img {
-    margin-bottom: 20px;
-    max-width: 550px;
-    width: 100%;
-  }
-  & h3 {
-  }
-  & p {
-    margin: 10px auto 20px;
-  }
-
-  & button {
-    padding: 10px 20px;
-    background-color: transparent;
-    border: 2px solid #ea5820;
-    color: #ea5820;
-    cursor: pointer;
-    transition: 0.5s ease-in-out;
-
-    &:hover {
-      background-color: #fff;
-      color: #000;
-    }
-  }
-`;
 
 const Home = () => {
   return (
@@ -188,42 +150,36 @@ const Home = () => {
       <HomeLatestProjects>
         <h2>Projetos Recentes</h2>
         <HomeLatestProjectsList>
-          <HomeLatestProjectsItem>
-            <img src={HomeLatestProjectsImg} alt="Projeto 1" />
-            <h3>NOME DO PROJETO</h3>
-            <p>Aenean ultricies magna non sapien rhoncus, ac ullamcorper lorem convallis. Quisque at venenatis nisi, amet finibus mauris. Sed sodales ultricies eros, sit amet sodales sapien.</p>
-            <button>Veja Mais</button>
-          </HomeLatestProjectsItem>
-          <HomeLatestProjectsItem>
-            <img src={HomeLatestProjectsImg} alt="Projeto 2" />
-            <h3>NOME DO PROJETO</h3>
-            <p>Aenean ultricies magna non sapien rhoncus, ac ullamcorper lorem convallis. Quisque at venenatis nisi, amet finibus mauris. Sed sodales ultricies eros, sit amet sodales sapien.</p>
-            <button>Veja Mais</button>
-          </HomeLatestProjectsItem>
-          <HomeLatestProjectsItem>
-            <img src={HomeLatestProjectsImg} alt="Projeto 3" />
-            <h3>NOME DO PROJETO</h3>
-            <p>Aenean ultricies magna non sapien rhoncus, ac ullamcorper lorem convallis. Quisque at venenatis nisi, amet finibus mauris. Sed sodales ultricies eros, sit amet sodales sapien.</p>
-            <button>Veja Mais</button>
-          </HomeLatestProjectsItem>
-          <HomeLatestProjectsItem>
-            <img src={HomeLatestProjectsImg} alt="Projeto 4" />
-            <h3>NOME DO PROJETO</h3>
-            <p>Aenean ultricies magna non sapien rhoncus, ac ullamcorper lorem convallis. Quisque at venenatis nisi, amet finibus mauris. Sed sodales ultricies eros, sit amet sodales sapien.</p>
-            <button>Veja Mais</button>
-          </HomeLatestProjectsItem>
-          <HomeLatestProjectsItem>
-            <img src={HomeLatestProjectsImg} alt="Projeto 5" />
-            <h3>NOME DO PROJETO</h3>
-            <p>Aenean ultricies magna non sapien rhoncus, ac ullamcorper lorem convallis. Quisque at venenatis nisi, amet finibus mauris. Sed sodales ultricies eros, sit amet sodales sapien.</p>
-            <button>Veja Mais</button>
-          </HomeLatestProjectsItem>
-          <HomeLatestProjectsItem>
-            <img src={HomeLatestProjectsImg} alt="Projeto 6" />
-            <h3>NOME DO PROJETO</h3>
-            <p>Aenean ultricies magna non sapien rhoncus, ac ullamcorper lorem convallis. Quisque at venenatis nisi, amet finibus mauris. Sed sodales ultricies eros, sit amet sodales sapien.</p>
-            <button>Veja Mais</button>
-          </HomeLatestProjectsItem>
+          <CardProjectsItem
+            cardImg={HomeLatestProjectsImg}
+            title="Nome do Projeto"
+            description="Aenean ultricies magna non sapien rhoncus, ac ullamcorper lorem convallis. Quisque at venenatis nisi, amet finibus mauris. Sed sodales ultricies eros, sit amet sodales sapien."
+          />
+          <CardProjectsItem
+            cardImg={HomeLatestProjectsImg}
+            title="Nome do Projeto"
+            description="Aenean ultricies magna non sapien rhoncus, ac ullamcorper lorem convallis. Quisque at venenatis nisi, amet finibus mauris. Sed sodales ultricies eros, sit amet sodales sapien."
+          />
+          <CardProjectsItem
+            cardImg={HomeLatestProjectsImg}
+            title="Nome do Projeto"
+            description="Aenean ultricies magna non sapien rhoncus, ac ullamcorper lorem convallis. Quisque at venenatis nisi, amet finibus mauris. Sed sodales ultricies eros, sit amet sodales sapien."
+          />
+          <CardProjectsItem
+            cardImg={HomeLatestProjectsImg}
+            title="Nome do Projeto"
+            description="Aenean ultricies magna non sapien rhoncus, ac ullamcorper lorem convallis. Quisque at venenatis nisi, amet finibus mauris. Sed sodales ultricies eros, sit amet sodales sapien."
+          />
+          <CardProjectsItem
+            cardImg={HomeLatestProjectsImg}
+            title="Nome do Projeto"
+            description="Aenean ultricies magna non sapien rhoncus, ac ullamcorper lorem convallis. Quisque at venenatis nisi, amet finibus mauris. Sed sodales ultricies eros, sit amet sodales sapien."
+          />
+          <CardProjectsItem
+            cardImg={HomeLatestProjectsImg}
+            title="Nome do Projeto"
+            description="Aenean ultricies magna non sapien rhoncus, ac ullamcorper lorem convallis. Quisque at venenatis nisi, amet finibus mauris. Sed sodales ultricies eros, sit amet sodales sapien."
+          />
         </HomeLatestProjectsList>
       </HomeLatestProjects>
     </HomeContainer>

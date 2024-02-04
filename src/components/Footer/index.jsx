@@ -55,7 +55,7 @@ const FooterList = styled.ul`
 
 export const Footer = () => {
   return (
-    <FooterContainer>
+    <FooterContainer id="footer">
       <img src={FooterLogo} />
       <FooterList>
         <li>
