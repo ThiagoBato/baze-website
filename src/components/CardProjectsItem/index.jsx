@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { animateScroll } from 'react-scroll';
 
 const CardProjectsItemContainer = styled.li`
   display: flex;
@@ -44,13 +45,19 @@ const CardLink = styled(Link)`
 `;
 
 export const CardProjectsItem = ({ cardImg = '', title = '', description = '' }) => {
+  const handleClickBtn = () => {
+    animateScroll.scrollToTop({ smooth: true, duration: 0, delay: 0 });
+  };
+
   return (
     <>
       <CardProjectsItemContainer>
         <img src={cardImg} alt={title} />
         <h3>{title}</h3>
         <p>{description}</p>
-        <CardLink to="/projeto-detalhe">Veja Mais</CardLink>
+        <CardLink to="/projeto-detalhe" onClick={handleClickBtn}>
+          Veja Mais
+        </CardLink>
       </CardProjectsItemContainer>
     </>
   );
