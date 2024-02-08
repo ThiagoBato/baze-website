@@ -11,7 +11,7 @@ import ProjectDetail from './pages/ProjectDetail';
 import Comercials from './pages/Comercials';
 import Interior from './pages/Interior';
 import Team from './pages/Team';
-import NoPage from './pages/NoPage';
+// import NoPage from './pages/NoPage';
 
 // import { CookieConsentBanner } from './components/CookieConsentBanner';
 
