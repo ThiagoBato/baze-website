@@ -9,7 +9,7 @@ export const PostLoading = styled.div`
   min-height: calc(100vh - 400px);
 
   @media (max-width: 840px) {
-    min-height: calc(100vh - 60px);
+    min-height: calc(100vh - 110px);
   }
 
   .loading-icon {
