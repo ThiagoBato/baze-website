@@ -1,16 +1,9 @@
-import { ResidencialContainer, ResidencialTitle, ResidencialProjectsList } from './styles';
-import { CardProjectsItem } from '../../components/CardProjectsItem';
+import ProjectList from '../ProjecstList';
 
 const Residencial = () => {
   return (
     <main>
-      <ResidencialContainer>
-        <ResidencialTitle>Residenciais</ResidencialTitle>
-
-        <ResidencialProjectsList>
-          <CardProjectsItem categoryId={4} />
-        </ResidencialProjectsList>
-      </ResidencialContainer>
+      <ProjectList title="Residenciais" categoryId={4} />
     </main>
   );
 };

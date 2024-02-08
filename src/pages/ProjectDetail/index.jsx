@@ -1,7 +1,8 @@
-import { ProjectDetailContainer, ProjectDetailImg, ProjectDetailTitle, ProjectDetailSubtitle } from './styles';
+import { ProjectDetailContainer, ProjectDetailImg, ProjectDetailTitle, ProjectDetailSubtitle, PostLoading } from './styles';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { MdArchitecture } from 'react-icons/md';
 
 const ProjectDetail = () => {
   const { postId } = useParams();
@@ -32,15 +33,21 @@ const ProjectDetail = () => {
   }, [postId]);
 
   if (!postDetails) {
-    return <p>Carregando...</p>;
+    return (
+      <PostLoading style={{ display: !contentLoaded ? 'flex' : 'none' }}>
+        <MdArchitecture className="loading-icon" />
+      </PostLoading>
+    );
   }
 
   return (
-    <ProjectDetailContainer style={{ display: contentLoaded ? 'block' : 'none' }}>
-      <ProjectDetailImg src={postDetails.acf.imagem_do_projeto} alt="" onLoad={() => setContentLoaded(true)} />
-      <ProjectDetailTitle>{postDetails.title.rendered}</ProjectDetailTitle>
-      <ProjectDetailSubtitle>{postDetails.acf.descricao_do_projeto}</ProjectDetailSubtitle>
-    </ProjectDetailContainer>
+    <main>
+      <ProjectDetailContainer style={{ display: contentLoaded ? 'block' : 'none' }}>
+        <ProjectDetailImg src={postDetails.acf.imagem_do_projeto} alt="" onLoad={() => setContentLoaded(true)} />
+        <ProjectDetailTitle>{postDetails.title.rendered}</ProjectDetailTitle>
+        <ProjectDetailSubtitle>{postDetails.acf.descricao_do_projeto}</ProjectDetailSubtitle>
+      </ProjectDetailContainer>
+    </main>
   );
 };
 

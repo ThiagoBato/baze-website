@@ -1,17 +1,11 @@
-import { InteriorContainer, InteriorTitle, InteriorProjectsList } from './styles';
-import { CardProjectsItem } from '../../components/CardProjectsItem';
+import ProjectList from '../ProjecstList';
 
-const Interior = () => {
+const Residencial = () => {
   return (
     <main>
-      <InteriorContainer>
-        <InteriorTitle>Interiores</InteriorTitle>
-        <InteriorProjectsList>
-          <CardProjectsItem categoryId={5} />
-        </InteriorProjectsList>
-      </InteriorContainer>
+      <ProjectList title="Interiores" categoryId={5} />
     </main>
   );
 };
 
-export default Interior;
+export default Residencial;

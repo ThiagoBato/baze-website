@@ -11,7 +11,6 @@ import ProjectDetail from './pages/ProjectDetail';
 import Comercials from './pages/Comercials';
 import Interior from './pages/Interior';
 import Team from './pages/Team';
-import NoPage from './pages/NoPage';
 
 // import { CookieConsentBanner } from './components/CookieConsentBanner';
 
@@ -29,7 +28,7 @@ function App() {
             <Route path="interior" element={<Interior />} />
             <Route path="time" element={<Team />} />
             <Route path="projeto-detalhe/:postId" element={<ProjectDetail />} />
-            <Route path="*" element={<NoPage />} />
+            <Route path="*" element={<Home />} />
           </Route>
         </Routes>
       </BrowserRouter>

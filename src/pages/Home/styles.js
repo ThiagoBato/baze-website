@@ -96,6 +96,28 @@ export const HomeLatestProjects = styled.section`
   }
 `;
 
+export const PostLoading = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 200px);
+
+  .loading-icon {
+    animation: animate 4s infinite;
+    font-size: 2rem;
+    @keyframes animate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(720deg);
+      }
+    }
+  }
+`;
+
 export const HomeLatestProjectsList = styled.ul`
   display: flex;
   list-style: none;

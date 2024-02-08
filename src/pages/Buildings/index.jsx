@@ -1,18 +1,11 @@
-import { BuildingsContainer, BuildingsTitle, BuildingsProjectsList } from './styles';
-import { CardProjectsItem } from '../../components/CardProjectsItem';
+import ProjectList from '../ProjecstList';
 
-const Buildings = () => {
+const Residencial = () => {
   return (
     <main>
-      <BuildingsContainer>
-        <BuildingsTitle>Edifícios</BuildingsTitle>
-
-        <BuildingsProjectsList>
-          <CardProjectsItem categoryId={3} />
-        </BuildingsProjectsList>
-      </BuildingsContainer>
+      <ProjectList title="Edifícios" categoryId={3} />
     </main>
   );
 };
 
-export default Buildings;
+export default Residencial;

@@ -1,10 +1,14 @@
 import { Hero } from '../../components/Hero';
-import { HomeContainer, HomeDescriptionContainer, HomeDescriptionPrimary, HomeTitle, HomeDescriptionSecondary, HomeIcon, HomeSubtitle, HomeLatestProjects, HomeLatestProjectsList } from './styles';
+import { HomeContainer, HomeDescriptionContainer, HomeDescriptionPrimary, HomeTitle, HomeDescriptionSecondary, HomeIcon, HomeSubtitle, HomeLatestProjects, HomeLatestProjectsList, PostLoading } from './styles';
 import HomeLogoImg from '../../assets/img/pic07.jpg';
 import HomeLogoIcon from '../../assets/img/home-icone.svg';
 import { CardProjectsItem } from '../../components/CardProjectsItem';
+import { useState } from 'react';
+import { MdArchitecture } from 'react-icons/md';
 
 const Home = () => {
+  const [contentLoaded, setContentLoaded] = useState(false);
+
   return (
     <HomeContainer>
       <Hero />
@@ -41,7 +45,10 @@ const Home = () => {
 
       <HomeLatestProjects>
         <h2>Projetos Recentes</h2>
-        <HomeLatestProjectsList>
+        <PostLoading style={{ display: !contentLoaded ? 'flex' : 'none' }}>
+          <MdArchitecture className="loading-icon" />
+        </PostLoading>
+        <HomeLatestProjectsList onLoad={() => setContentLoaded(true)}>
           <CardProjectsItem />
         </HomeLatestProjectsList>
       </HomeLatestProjects>
