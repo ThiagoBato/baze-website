@@ -8,6 +8,13 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     scroll-behavior: smooth;
   }
+  main {
+    min-height: calc(100vh - 400px);
+
+    @media (max-width: 840px) {
+      min-height: calc(100vh - 60px);
+    }
+  }
   h2 {
     font-size: 2rem;
     font-weight: 900;

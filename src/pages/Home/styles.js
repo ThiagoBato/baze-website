@@ -77,6 +77,7 @@ export const HomeSubtitle = styled.h3`
 `;
 
 export const HomeLatestProjects = styled.section`
+  min-height: 100vh;
   padding: 50px 20px;
 
   h2 {

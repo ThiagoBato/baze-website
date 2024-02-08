@@ -3,13 +3,15 @@ import { CardProjectsItem } from '../../components/CardProjectsItem';
 
 const Buildings = () => {
   return (
-    <BuildingsContainer>
-      <BuildingsTitle>Edifícios</BuildingsTitle>
+    <main>
+      <BuildingsContainer>
+        <BuildingsTitle>Edifícios</BuildingsTitle>
 
-      <BuildingsProjectsList>
-        <CardProjectsItem categoryId={3} />
-      </BuildingsProjectsList>
-    </BuildingsContainer>
+        <BuildingsProjectsList>
+          <CardProjectsItem categoryId={3} />
+        </BuildingsProjectsList>
+      </BuildingsContainer>
+    </main>
   );
 };
 

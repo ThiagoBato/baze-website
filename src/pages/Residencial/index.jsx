@@ -3,13 +3,15 @@ import { CardProjectsItem } from '../../components/CardProjectsItem';
 
 const Residencial = () => {
   return (
-    <ResidencialContainer>
-      <ResidencialTitle>Residenciais</ResidencialTitle>
+    <main>
+      <ResidencialContainer>
+        <ResidencialTitle>Residenciais</ResidencialTitle>
 
-      <ResidencialProjectsList>
-        <CardProjectsItem categoryId={4} />
-      </ResidencialProjectsList>
-    </ResidencialContainer>
+        <ResidencialProjectsList>
+          <CardProjectsItem categoryId={4} />
+        </ResidencialProjectsList>
+      </ResidencialContainer>
+    </main>
   );
 };
 
