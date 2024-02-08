@@ -1,85 +1,8 @@
 import { useState } from 'react';
 import { Outlet, NavLink, Link } from 'react-router-dom';
 import { animateScroll } from 'react-scroll';
-import style from 'styled-components';
+import { HeaderContainer, HeaderLogo, HeaderList, HeaderBtnMenu } from './styles';
 import HeaderLogoImg from '../../assets/img/logo-topo.svg';
-
-const HeaderContainer = style.header`
-  align-items: center;
-  background-color: #2C3147;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 10px 20px;
-
-  @media (max-width: 840px) {
-    display: block;
-    & > div {
-      align-items: center;
-      display: flex;
-      justify-content: space-between;
-    } 
-  }
-`;
-const HeaderLogo = style.img`
-  max-width: 150px;
-  width: 100%;
-`;
-const HeaderList = style.ul`
-  display: flex;
-  gap: 25px;
-  list-style: none;
-  padding: 0;
-
-  & a {
-    color: #fff;
-    font-size: 0.9rem;
-    font-weight: 300;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: color 0.3s;
-
-    &:hover {
-      color: #4E8AA9;
-      cursor: pointer;
-    }
-
-    &.active {
-      color: #4e8aa9;
-    }
-  }
-  @media (max-width: 840px) {
-    flex-direction: column;
-    height: 0;
-    overflow: hidden;
-    transition: 0.3s ease-in-out;
-
-    &.headerList-active {
-      display: flex;
-      height: 286px;
-      margin: 10px 0;
-    }
-  }
-`;
-const HeaderBtnMenu = style.button`
-  background-color: #4E8AA9;
-  border: none;
-  border-radius: 5px;
-  display: none;
-  height: 35px;
-  padding: 5px;
-
-  & span {
-    border-bottom: 1px solid #2C3147;
-    padding: 0px 10px;
-    width: 10px;
-    display: block;
-    margin: 5px;
-  }
-  @media (max-width: 840px) {
-    display: block;
-  }
-`;
 
 export const Header = () => {
   const [menuMobile, setMenuMobile] = useState(false);

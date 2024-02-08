@@ -1,64 +1,65 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { animateScroll } from 'react-scroll';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { CardProjectsItemContainer, CardLink } from './styles';
 
-const CardProjectsItemContainer = styled.li`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 33%;
-  max-width: 350px;
-  padding: 20px;
+// eslint-disable-next-line react/prop-types
+export const CardProjectsItem = ({ categoryId }) => {
+  const [posts, setPosts] = useState([]);
 
-  @media (max-width: 840px) {
-    max-width: 100%;
-    padding: 0;
-    width: 100%;
-  }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let response;
 
-  & img {
-    margin-bottom: 20px;
-    max-width: 550px;
-    width: 100%;
-  }
-  & h3 {
-  }
-  & p {
-    margin: 10px auto 20px;
-  }
-`;
+        if (!categoryId) {
+          response = await axios.get('https://api.bazearquitetura.com/wp-json/wp/v2/posts', {
+            params: {
+              per_page: 6,
+              _embed: true,
+            },
+          });
+        } else {
+          response = await axios.get(`https://api.bazearquitetura.com/wp-json/wp/v2/posts?categories=${categoryId}`);
+        }
 
-const CardLink = styled(Link)`
-  background-color: transparent;
-  border: 2px solid #ea5820;
-  color: #ea5820;
-  cursor: pointer;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  transition: 0.5s ease-in-out;
+        const postsWithImageURL = await Promise.all(
+          response.data.map(async (post) => {
+            const imageSizesResponse = await axios.get(`https://api.bazearquitetura.com/wp-json/wp/v2/media/${post.acf.imagem_do_projeto}`);
+            const imageSizes = imageSizesResponse.data.media_details.sizes;
 
-  &:hover {
-    background-color: #fff;
-    color: #000;
-  }
-`;
+            const selectedSize = imageSizes.medium || imageSizes.full;
 
-export const CardProjectsItem = ({ cardImg = '', title = '', description = '' }) => {
-  const handleClickBtn = () => {
-    animateScroll.scrollToTop({ smooth: true, duration: 0, delay: 0 });
-  };
+            return {
+              ...post,
+              acf: {
+                ...post.acf,
+                imagem_do_projeto: selectedSize.source_url,
+                selectedSize,
+              },
+            };
+          })
+        );
+
+        setPosts(postsWithImageURL);
+      } catch (error) {
+        console.error('Erro ao obter dados da API:', error);
+      }
+    };
+
+    fetchData();
+  }, [categoryId]);
 
   return (
     <>
-      <CardProjectsItemContainer>
-        <img src={cardImg} alt={title} />
-        <h3>{title}</h3>
-        <p>{description}</p>
-        <CardLink to="/projeto-detalhe" onClick={handleClickBtn}>
-          Veja Mais
-        </CardLink>
-      </CardProjectsItemContainer>
+      {posts.map((post) => (
+        <CardProjectsItemContainer key={post.id}>
+          <picture>
+            <img srcSet={`${post.acf.selectedSize.source_url} ${post.acf.selectedSize.width}w`} sizes="(max-width: 300px) 100vw, 300px" src={post.acf.selectedSize.source_url} alt={post.acf.titulo_do_projeto} loading="lazy" />
+          </picture>
+          <h3>{post.acf.titulo_do_projeto}</h3>
+          <CardLink to={`/projeto-detalhe/${post.id}`}>Saiba Mais</CardLink>
+        </CardProjectsItemContainer>
+      ))}
     </>
   );
 };
