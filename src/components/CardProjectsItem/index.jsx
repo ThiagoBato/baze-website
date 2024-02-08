@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { CardProjectsItemContainer, CardLink } from './styles';
+import { animateScroll } from 'react-scroll';
 
 // eslint-disable-next-line react/prop-types
 export const CardProjectsItem = ({ categoryId }) => {
@@ -49,6 +50,10 @@ export const CardProjectsItem = ({ categoryId }) => {
     fetchData();
   }, [categoryId]);
 
+  const handleClickLink = () => {
+    animateScroll.scrollToTop({ smooth: true, duration: 500, delay: 0 });
+  };
+
   return (
     <>
       {posts.map((post) => (
@@ -57,7 +62,9 @@ export const CardProjectsItem = ({ categoryId }) => {
             <img srcSet={`${post.acf.selectedSize.source_url} ${post.acf.selectedSize.width}w`} sizes="(max-width: 300px) 100vw, 300px" src={post.acf.selectedSize.source_url} alt={post.acf.titulo_do_projeto} loading="lazy" />
           </picture>
           <h3>{post.acf.titulo_do_projeto}</h3>
-          <CardLink to={`/projeto-detalhe/${post.id}`}>Saiba Mais</CardLink>
+          <CardLink to={`/projeto-detalhe/${post.id}`} onClick={handleClickLink}>
+            Saiba Mais
+          </CardLink>
         </CardProjectsItemContainer>
       ))}
     </>
